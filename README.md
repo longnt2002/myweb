@@ -1,64 +1,249 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# MyWeb - Personal Website with Games
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Một trang web cá nhân được xây dựng bằng Laravel, bao gồm Flappy Bird game và hệ thống quản lý game.
 
-## About Laravel
+## 🎮 Tính năng
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- ✅ Trang chủ với menu điều hướng
+- ✅ Trang Giới thiệu (About) - hiển thị thông tin cá nhân
+- ✅ Trang Game - danh sách các game
+- ✅ Trò chơi Flappy Bird - chơi trực tiếp trên web
+- ✅ Hệ thống quản lý game backend
+- ✅ API REST để quản lý dữ liệu game
+- ✅ Tìm kiếm game realtime
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📋 Yêu cầu
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **PHP:** 8.0 hoặc cao hơn
+- **Composer:** Để cài đặt PHP dependencies
+- **Git:** Để clone repository
 
-## Learning Laravel
+## 🚀 Hướng dẫn Cài đặt
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Bước 1: Clone Repository
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```bash
+git clone https://github.com/longnt2002/myweb.git
+cd myweb
+```
 
-## Laravel Sponsors
+### Bước 2: Cài đặt Dependencies PHP
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```bash
+composer install
+```
 
-### Premium Partners
+### Bước 3: Cấu hình Environment
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Copy file `.env.example` thành `.env`:
 
-## Contributing
+```bash
+cp .env.example .env
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Tạo Application Key:
 
-## Code of Conduct
+```bash
+php artisan key:generate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Bước 4: Setup Database
 
-## Security Vulnerabilities
+Chạy migrations để tạo tables:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+php artisan migrate
+```
 
-## License
+Seed dữ liệu mẫu (6 games):
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+php artisan db:seed
+```
+
+### Bước 5: Chạy Development Server
+
+**Cách 1: Dùng Laravel Artisan**
+```bash
+php artisan serve
+```
+
+**Cách 2: Dùng PHP Built-in Server**
+```bash
+php -S localhost:8000 -t public
+```
+
+Truy cập trang web tại: **http://localhost:8000**
+
+## 📁 Cấu trúc Thư mục
+
+```
+myweb/
+├── app/
+│   ├── Http/Controllers/
+│   │   ├── MenuController.php          # Điều hướng trang
+│   │   └── Api/GameController.php      # API quản lý game
+│   └── Models/
+│       └── Game.php                    # Model Game
+├── database/
+│   ├── migrations/                     # Định nghĩa database schema
+│   ├── seeders/                        # Dữ liệu mẫu
+│   └── database.sqlite                 # SQLite database file
+├── resources/
+│   └── views/
+│       ├── menu.blade.php             # Trang chủ
+│       ├── about.blade.php            # Trang giới thiệu
+│       ├── games.blade.php            # Danh sách game
+│       ├── projects.blade.php         # Trang dự án
+│       └── flappybird.blade.php       # Game Flappy Bird
+├── routes/
+│   ├── web.php                         # Web routes
+│   └── api.php                         # API routes
+├── .env.example                        # Template environment
+└── README.md                           # File này
+```
+
+## 🔌 API Endpoints
+
+### Lấy danh sách tất cả game
+```
+GET /api/games
+```
+
+**Response:**
+```json
+[
+  {
+    "id": 1,
+    "name": "Flappy Bird",
+    "description": "Trò chơi Flappy Bird kinh điển...",
+    "image": "game1.jpg",
+    "link": "/games/flappybird",
+    "created_at": "2026-04-11T19:00:44.000000Z",
+    "updated_at": "2026-04-11T19:00:44.000000Z"
+  }
+]
+```
+
+### Lấy 1 game cụ thể
+```
+GET /api/games/{id}
+```
+
+### Tạo game mới
+```
+POST /api/games
+Content-Type: application/json
+
+{
+  "name": "Game Name",
+  "description": "Game Description",
+  "image": "game.jpg",
+  "link": "/games/example"
+}
+```
+
+### Cập nhật game
+```
+PUT /api/games/{id}
+Content-Type: application/json
+
+{
+  "name": "Updated Name",
+  "description": "Updated Description"
+}
+```
+
+### Xóa game
+```
+DELETE /api/games/{id}
+```
+
+## 🎮 Cách Chơi Flappy Bird
+
+1. Vào trang **Games** → Click vào **Flappy Bird**
+2. Click nút **"Bắt Đầu Chơi"** hoặc nhấn **SPACE**
+3. Nhấn **SPACE** hoặc **Click chuột** để bay lên
+4. Tránh các đường ống, giành phục vụ cao nhất
+5. **Điểm cao nhất** được lưu trữ (localStorage)
+
+## 🔧 Troubleshooting
+
+### Lỗi: "No encryption key has been defined"
+```bash
+php artisan key:generate
+```
+
+### Lỗi: "unable to open database file"
+```bash
+php artisan migrate
+```
+
+### Migrations không chạy được
+Đảm bảo đã chạy:
+```bash
+php artisan migrate --force
+```
+
+### Database cần reset
+```bash
+php artisan migrate:refresh --seed
+```
+
+## 📝 Tùy chỉnh
+
+### Thay đổi thông tin cá nhân
+Chỉnh sửa file `resources/views/about.blade.php`
+
+### Thêm game mới
+Dùng Laravel Tinker:
+```bash
+php artisan tinker
+
+App\Models\Game::create([
+    'name' => 'Game Name',
+    'description' => 'Description',
+    'image' => 'image.jpg',
+    'link' => '/games/slug'
+]);
+```
+
+Hoặc POST tới API:
+```bash
+curl -X POST http://localhost:8000/api/games \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Game Name",
+    "description": "Description",
+    "image": "image.jpg",
+    "link": "/games/slug"
+  }'
+```
+
+## 📚 Tài liệu
+
+- [Laravel Documentation](https://laravel.com/docs)
+- [Eloquent ORM](https://laravel.com/docs/eloquent)
+- [Blade Template](https://laravel.com/docs/blade)
+
+## 📄 Files quan trọng
+
+- `.env.example` - Template cho cấu hình
+- `database/migrations/` - Schema definition
+- `database/seeders/DatabaseSeeder.php` - Dữ liệu mẫu
+- `routes/web.php` - Web routes
+- `routes/api.php` - API routes
+
+## 👨‍💻 Tác giả
+
+**Ngô Tuấn Long**
+- Email: longcpvc6@gmail.com
+- Phone: 0909459402
+- Address: Bình Tiên, Q6, TPHCM
+- GitHub: [@longnt2002](https://github.com/longnt2002)
+
+---
+
+**Hãy star ⭐ repository này nếu bạn thích!**
+
+Happy coding! 🚀
