@@ -1,0 +1,3 @@
+_ avatar là tên ảnh đại diện trong trang Về tôi.
+_ background là ảnh nền của các trang.
+_ ảnh các trò chơi trong trang trò chơi là game1.jpg, game2.jpg,...
