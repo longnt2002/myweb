@@ -19,3 +19,5 @@ Route::get('/games', [MenuController::class, 'games']);
 Route::get('/projects', [MenuController::class, 'projects']);
 Route::get('/about', [MenuController::class, 'about']);
 Route::get('/games/flappybird', [MenuController::class, 'flappybird']);
+Route::get('/games/minesweeper', [MenuController::class, 'minesweeper']);
+Route::get('/paint', [MenuController::class, 'paint']);

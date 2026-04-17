@@ -81,6 +81,58 @@
             font-size: 1.1rem;
         }
 
+        /* Submenu styles */
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.95);
+            list-style: none;
+            min-width: 200px;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            transform: translateY(-10px);
+        }
+
+        .menu-item:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .submenu li {
+            margin: 0;
+        }
+
+        .submenu li a {
+            display: flex !important;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.2rem !important;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 400;
+            border-radius: 0;
+        }
+
+        .submenu li a:hover {
+            background-color: #667eea;
+            padding-left: 1.8rem !important;
+        }
+
+        .submenu li:first-child a {
+            border-radius: 4px 4px 0 0;
+        }
+
+        .submenu li:last-child a {
+            border-radius: 0 0 4px 4px;
+        }
+
         .content {
             max-width: 1200px;
             margin: 3rem auto;
@@ -148,6 +200,9 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 350px;
         }
 
         .game-card:hover {
@@ -160,10 +215,14 @@
             height: 200px;
             object-fit: cover;
             background-color: #f0f0f0;
+            flex-shrink: 0;
         }
 
         .game-card-info {
             padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
         .game-card-title {
@@ -171,6 +230,17 @@
             font-size: 1.1rem;
             font-weight: 600;
             margin: 0;
+        }
+
+        .game-card-info p:last-child {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex: 1;
         }
 
         .game-card-link {
@@ -220,6 +290,22 @@
                         </a>
                     </li>
                 @endforeach
+                <!-- Tiện ích submenu -->
+                <li class="menu-item">
+                    <a href="#" title="Tiện ích">
+                        <i class="fas fa-toolbox"></i>
+                        Tiện ích
+                        <i class="fas fa-chevron-down" style="font-size: 0.8rem; margin-left: 0.3rem;"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="/paint" title="Ứng dụng vẽ">
+                                <i class="fas fa-palette"></i>
+                                Ứng Dụng Vẽ
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </nav>
